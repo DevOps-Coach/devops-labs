@@ -2,8 +2,7 @@ pipeline {
     agent any
 
     parameters {
-         string(name: 'tomcat_dev', defaultValue: '172.31.19.48', description: 'Dev Server')
-         string(name: 'tomcat_qa', defaultValue: '172.31.18.192', description: 'QA Server')
+         string(name: 'tomcat_prod', defaultValue: '172.31.28.58', description: 'PROD Server')
     }
 
     triggers {
@@ -23,19 +22,18 @@ stages{
         }
 
         stage ('Deployments'){
-            parallel{
-                stage ('Deploy to Dev'){
+                stage ('Deploy to PROD'){
                     steps {
                         sh "scp -i /home/ec2-user/mlabs.pem target/*.war ec2-user@${params.tomcat_dev}:/home/ec2-user/apache-tomcat-8.5.24/webapps/devops.war"
                     }
                 }
 
-                stage ("Deploy to QA"){
+                stage ("Smoke test PORD service"){
                     steps {
-                        sh "scp -i /home/ec2-user/mlabs.pem target/*.war ec2-user@${params.tomcat_qa}:/home/ec2-user/apache-tomcat-8.5.24/webapps/devops.war"
+                        sh "curl http://${params.tomcat_qa}:8080/devops/"
                     }
                 }
-            }
+
         }
     }
 }
