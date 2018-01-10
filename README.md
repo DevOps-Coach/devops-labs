@@ -1,1 +1,1 @@
-# devops-labs
+# DevOps Training Course 
