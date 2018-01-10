@@ -32,7 +32,7 @@ stages{
 
                 stage ("Deploy to QA"){
                     steps {
-                        echo 'deploy to qa'
+                        sh "scp -i /home/ec2-user/mlabs.pem target/*.war ec2-user@${params.tomcat_qa}:/home/ec2-user/apache-tomcat-8.5.24/webapps/devops.war"
                     }
                 }
             }
