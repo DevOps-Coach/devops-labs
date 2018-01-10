@@ -1,0 +1,39 @@
+pipeline {
+    agent any
+
+    parameters {
+         string(name: 'tomcat_prod', defaultValue: '172.31.28.58', description: 'PROD Server')
+    }
+
+    triggers {
+         pollSCM('* * * * *')
+     }
+
+stages{
+        stage('CopyArtifact'){
+            steps {
+                copyArtifacts filter: '**/*.war', fingerprintArtifacts: true, projectName: 'spring', selector: lastSuccessful()
+            }
+            post {
+                success {
+                    echo 'WE ARE Start to Deployments...'
+                }
+            }
+        }
+
+        stage ('Deployments'){
+                stage ('Deploy to PROD'){
+                    steps {
+                        sh "scp -i /home/ec2-user/mlabs.pem target/*.war ec2-user@${params.tomcat_dev}:/home/ec2-user/apache-tomcat-8.5.24/webapps/devops.war"
+                    }
+                }
+
+                stage ("Smoke test PORD service"){
+                    steps {
+                        sh "curl http://${params.tomcat_qa}:8080/devops/"
+                    }
+                }
+
+        }
+    }
+}

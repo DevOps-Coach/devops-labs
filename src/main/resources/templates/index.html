@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.thymeleaf.org">
+
+<head>
+
+	<title>DevOps Course Test - Shanghai Bank!</title>
+
+	<meta charset="utf-8"/>
+
+	<meta name="viewport" content="width=device-width, initial-scale=1"/>
+
+	<!-- <link rel="stylesheet" type="text/css" href="css/main.css"> -->
+
+	<!--[if lt IE 9]>
+
+	<link rel="stylesheet" type="text/css" href="css/lt-ie9.css">
+
+	<![endif]-->
+
+	<style type="text/css">
+
+	*{margin:0;padding:0;}
+
+	body{
+
+		font:18px/20px "Microsoft YaHei",arial,serif;
+
+		color:#fff;
+
+		background:#fff;
+
+	}
+
+	img{border:0;}
+
+	a{text-decoration:none;}
+
+	/*这种写法表示header container footer 都应用如下样式*/
+
+	/*.header .container .xxx  则表示header元素中的container元素中的xxx元素应用的样式  */
+
+	.header,
+
+	.container,
+
+	.footer{
+
+		margin-left:auto;
+
+		margin-right:auto;
+
+		margin-top:10px;
+
+		text-align:center;
+
+	}
+
+	.header{
+
+		height:100px;
+
+		background:#333;
+
+	}
+
+	.sidebarLeft,
+
+	.main,
+
+	.sidebarRight{
+
+		background:#333;
+
+	}
+
+	.footer{
+
+		height:100px;
+
+		background:#333;
+
+	}
+
+	@media screen and (min-width:960px){
+
+		.header,
+
+		.container,
+
+		.footer{
+
+			width:960px;
+
+		}
+
+		.sidebarLeft,
+
+		.main,
+
+		.sidebarRight{
+
+			float:left;
+
+			height:400px;
+
+		}
+
+		.sidebarLeft,
+
+		.sidebarRight{
+
+			width:200px;
+
+		}
+
+		.main{
+
+			margin-left:10px;
+
+			margin-right:10px;
+
+			width:540px;
+
+		}
+
+		.container{
+
+			height:400px;
+
+		}
+
+	}
+
+	@media screen and (min-width:600px) and (max-width:960px){
+
+		.header,
+
+		.container,
+
+		.footer{
+
+			width:600px;
+
+		}
+
+		.sidebarLeft,
+
+		.main{
+
+			float:left;
+
+			height:400px;
+
+		}
+
+		/*sidebarRight 在某些宽度下是不显示的*/
+
+		.sidebarRight{
+
+			displahttp://www.easytd.com/tuxingwangye/d_15040221350.htmly:none;
+
+		}
+
+		.sidebarLeft{
+
+			width:160px;
+
+		}
+
+		.main{
+
+			margin-left:10px;
+
+			width:430px;
+
+		}
+
+		.container{
+
+			height:400px;
+
+		}
+
+	}
+
+	@media screen and (max-width:600px){
+
+		.header,
+
+		.container,
+
+		.footer{
+
+			width:400px;
+
+		}
+
+		.sidebarLeft,
+
+		.sidebarRight{
+
+			width:400px;
+
+			height:100px;
+
+		}
+
+		.main{
+
+			margin-top:10px;
+
+			width:400px;
+
+			height:200px;
+
+		}
+
+		.sidebarRight{
+
+			margin-top:10px;
+
+		}
+
+		.container{
+
+			height:420px;
+
+		}
+
+	}
+
+/*
+
+//完整版
+
+.header,
+
+.container,
+
+.footer{
+
+	margin-left:auto;
+
+	margin-right:auto;
+
+	width:960px;
+
+	margin-top:10px;
+
+	text-align:center;
+
+}
+
+.header{
+
+	height:100px;
+
+	background:#333;
+
+}
+
+.sidebarLeft,
+
+.main,
+
+.sidebarRight{
+
+	background:#333;
+
+	float:left;
+
+	height:400px;
+
+}
+
+.sidebarLeft,
+
+.sidebarRight{
+
+	width:200px;
+
+}
+
+.main{
+
+	margin-left:10px;
+
+	margin-right:10px;
+
+	width:540px;
+
+}
+
+.container{
+
+	height:400px;
+
+}
+
+.footer{
+
+	height:50px;
+
+	background:#333;
+
+}
+
+*/
+
+</style>
+
+</head>
+
+<body>
+
+	<div class="header">
+	<h1>Welcome to DevOps Course</h1>
+	
+	</div>
+
+	<div class="container">
+
+		<div class="sidebarLeft">Test this block</div>
+
+		<div class="main">
+		<p th:text=" 'Course Name:' + ${course}" />
+		</div>
+
+		<div class="sidebarRight">sidebarRight</div>
+
+	</div>
+
+	<div class="footer">footer</div>
+
+</body>
+
+</html>
+
