@@ -6,8 +6,6 @@ pipeline {
          string(name: 'tomcat_qa', defaultValue: '172.31.18.192', description: 'QA Server')
     }
 
-    checkout([$class: 'GitSCM', branches: [[name: '**']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[url: 'https://github.com/DevOps-Coach/devops-labs.git']]])
-
     triggers {
          pollSCM('* * * * *')
      }
