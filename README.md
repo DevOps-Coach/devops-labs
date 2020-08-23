@@ -1,3 +1,5 @@
-# DevOps Training Course 
+# DevOps 教练的实验室
 
-* add Slack intragration.
+## 变更
+
+- 重新初始化
